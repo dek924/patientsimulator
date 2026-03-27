@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PatientSim: A Persona-Driven Simulator for Realistic Doctor-Patient Interactions</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <style>
+    /* ── Hero overrides ─────────────────────────── */
+    :root {
+      --font: 'Outfit', -apple-system, sans-serif;
+      --ink: #1a1a1a;
+      --ink-light: #555;
+      --ink-muted: #888;
+      --bg: #fdfdfc;
+      --bg-warm: #f7f5f2;
+      --accent: #2c5f8a;
+      --border: #e0ddd8;
+    }
+
+    body { font-family: var(--font); }
+
+    .hero {
+      padding: 80px 0 56px;
+      text-align: center;
+      background: var(--bg);
+    }
+
+    .venue-line {
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+    }
+
+    .venue-line .spotlight-tag {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      vertical-align: 1px;
+    }
+
+    .hero .paper-title {
+      font-family: var(--font);
+      font-size: clamp(40px, 5.5vw, 58px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.025em;
+    }
+
+    .hero .paper-subtitle {
+      font-family: var(--font);
+      font-size: clamp(16px, 2.2vw, 20px);
+      font-weight: 400;
+      font-style: normal;
+      color: var(--ink-light);
+      line-height: 1.45;
+      margin-bottom: 40px;
+    }
+
+    .hero .authors {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 20px;
+      margin-bottom: 8px;
+    }
+
+    .hero .author {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .hero .author sup {
+      font-size: 10px;
+      color: var(--ink-muted);
+      margin-left: 1px;
+    }
+
+    .hero .affiliations {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 18px;
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 40px;
+    }
+
+    .hero .affiliations sup {
+      font-size: 9px;
+      margin-right: 2px;
+    }
+
+    .hero .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .hero .btn {
+      font-family: var(--font);
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <p class="venue-line">
+        NeurIPS 2025 · Datasets &amp; Benchmarks
+        <span class="spotlight-tag">Spotlight</span>
+      </p>
+
+      <h1 class="paper-title">PatientSim</h1>
+      <h2 class="paper-subtitle">A Persona-Driven Simulator for Realistic Doctor–Patient Interactions</h2>
+
+      <!-- Authors -->
+      <div class="authors">
+        <span class="author">Daeun Kyung<sup>1</sup></span>
+        <span class="author">Hyunseung Chung<sup>1</sup></span>
+        <span class="author">Seongsu Bae<sup>1</sup></span>
+        <span class="author">Jiho Kim<sup>1</sup></span>
+        <span class="author">Jae Ho Sohn<sup>2</sup></span>
+        <span class="author">Taerim Kim<sup>3</sup></span>
+        <span class="author">Soo Kyung Kim<sup>4</sup></span>
+        <span class="author">Edward Choi<sup>1</sup></span>
+      </div>
+
+      <div class="affiliations">
+        <span><sup>1</sup>KAIST</span>
+        <span><sup>2</sup>UCSF</span>
+        <span><sup>3</sup>Samsung Medical Center</span>
+        <span><sup>4</sup>Ewha Womans University</span>
+      </div>
+
+      <!-- Links -->
+      <div class="links">
+        <a href="https://arxiv.org/abs/2505.17818" class="btn btn-primary" target="_blank">
+          <i class="fas fa-file-pdf"></i> Paper
+        </a>
+        <a href="https://github.com/dek924/PatientSim" class="btn btn-dark" target="_blank">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="https://physionet.org/content/persona-patientsim/1.0.0/" class="btn btn-teal" target="_blank">
+          <i class="fas fa-database"></i> Dataset
+        </a>
+        <a href="https://huggingface.co/spaces/dek924/PatientSim_Demo" class="btn btn-outline" target="_blank">
+          <i class="fas fa-circle-play"></i> Demo
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  <div class="hero-divider"></div>
+
+
+  <!-- Teaser Figure -->
+  <section class="teaser">
+    <div class="container">
+      <div class="teaser-card">
+        <div class="teaser-diagram">
+          <div class="diagram-row">
+            <!-- Left: Clinical Profiles -->
+            <div class="diagram-box clinical">
+              <div class="box-icon"><i class="fas fa-hospital-user"></i></div>
+              <div class="box-title">Clinical Profiles</div>
+              <div class="box-desc">170 patient profiles from MIMIC-IV / MIMIC-IV-ED / MIMIC-IV-Note</div>
+              <div class="box-items">
+                <span>Demographics</span>
+                <span>Medical History</span>
+                <span>Visit Details</span>
+              </div>
+            </div>
+
+            <div class="arrow-right"><i class="fas fa-plus"></i></div>
+
+            <!-- Center: Persona Axes -->
+            <div class="diagram-box persona">
+              <div class="box-icon"><i class="fas fa-sliders"></i></div>
+              <div class="box-title">Persona Axes</div>
+              <div class="box-desc">37 unique combinations across 4 behavioral dimensions</div>
+              <div class="persona-axes">
+                <div class="axis"><span class="axis-label">Personality</span><span class="axis-count">6 types</span></div>
+                <div class="axis"><span class="axis-label">Language Proficiency</span><span class="axis-count">3 levels</span></div>
+                <div class="axis"><span class="axis-label">Medical History Recall</span><span class="axis-count">High / Low</span></div>
+                <div class="axis"><span class="axis-label">Cognitive Confusion</span><span class="axis-count">Normal / High</span></div>
+              </div>
+            </div>
+
+            <div class="arrow-right"><i class="fas fa-arrow-right"></i></div>
+
+            <!-- Right: Output -->
+            <div class="diagram-box output">
+              <div class="box-icon"><i class="fas fa-comment-medical"></i></div>
+              <div class="box-title">PatientSim</div>
+              <div class="box-desc">Realistic, diverse patient agent for ED consultation dialogues</div>
+            </div>
+          </div>
+        </div>
+        <p class="teaser-caption">PatientSim combines real MIMIC clinical profiles with multi-dimensional behavioral personas to generate realistic patient agents for doctor–patient dialogue evaluation and medical education.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section" id="abstract">
+    <div class="container narrow">
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-text">
+        Training physicians to conduct effective clinical interviews is a critical yet under-supported component of medical education. Existing patient simulators are either too rigid for natural conversation or too costly to scale. We present <strong>PatientSim</strong>, an open-source, LLM-powered patient simulator that generates realistic and behaviorally diverse patient personas grounded in real clinical data.
+      </p>
+      <p class="abstract-text">
+        PatientSim builds patient profiles from the MIMIC-IV family of datasets and augments them with four behavioral persona axes&mdash;personality type, language proficiency, medical history recall, and cognitive confusion&mdash;yielding 37 unique patient combinations. We benchmark eight LLMs as the simulator backbone and select <strong>Llama 3.3 70B</strong> based on clinician-validated quality scores. Four clinicians evaluated the platform and awarded an average overall quality score of <strong>3.89 / 4</strong>, with strong inter-rater agreement (Gwet's AC&#8321; &gt; 0.85). PatientSim is privacy-compliant, reproducible, and publicly released to advance medical dialogue research and clinical training.
+      </p>
+    </div>
+  </section>
+
+  <!-- Key Contributions -->
+  <section class="section section-alt" id="contributions">
+    <div class="container">
+      <h2 class="section-title">Key Contributions</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon blue"><i class="fas fa-layer-group"></i></div>
+          <h3>Novel Simulation Framework</h3>
+          <p>Combines structured real-world clinical data (MIMIC) with multi-dimensional behavioral persona axes to produce 37 distinct patient types, enabling large-scale and diverse dialogue simulation.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green"><i class="fas fa-microscope"></i></div>
+          <h3>Comprehensive LLM Evaluation</h3>
+          <p>Benchmarks 8 state-of-the-art LLMs across factual accuracy, persona fidelity, and clinical plausibility, with both automated and expert human evaluation.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon purple"><i class="fas fa-lock-open"></i></div>
+          <h3>Open &amp; Privacy-Compliant</h3>
+          <p>Fully open-source code and a de-identified PhysioNet dataset release, enabling reproducible benchmarks for the medical dialogue and healthcare education communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="section" id="method">
+    <div class="container">
+      <h2 class="section-title">Method</h2>
+
+      <div class="method-steps">
+
+        <!-- Step 1 -->
+        <div class="method-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Clinical Profile Construction</h3>
+            <p>Patient profiles are extracted from <strong>MIMIC-IV</strong> (v3.1), <strong>MIMIC-IV-ED</strong> (v2.2), and <strong>MIMIC-IV-Note</strong> (v2.2). Each profile comprises 24 structured fields covering demographics, medical history, and ED visit details. Profiles target five dialogue-amenable diagnoses.</p>
+            <div class="disease-chips">
+              <span class="chip">Myocardial Infarction</span>
+              <span class="chip">Pneumonia</span>
+              <span class="chip">Urinary Tract Infection</span>
+              <span class="chip">Intestinal Obstruction</span>
+              <span class="chip">Cerebral Infarction (Stroke)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="method-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Persona Axis Design</h3>
+            <p>Four independent behavioral axes define how a patient communicates, creating <strong>37 unique persona combinations</strong> that reflect the realistic diversity of real patients.</p>
+            <div class="axis-table">
+              <div class="axis-row header">
+                <span>Axis</span><span>Options</span>
+              </div>
+              <div class="axis-row">
+                <span><i class="fas fa-user-circle"></i> Personality</span>
+                <span>Impatient, Anxious, Distrustful, Overly Positive, Verbose, Neutral</span>
+              </div>
+              <div class="axis-row">
+                <span><i class="fas fa-language"></i> Language Proficiency</span>
+                <span>A (Basic), B (Intermediate), C (Advanced)</span>
+              </div>
+              <div class="axis-row">
+                <span><i class="fas fa-brain"></i> Medical History Recall</span>
+                <span>High Recall, Low Recall</span>
+              </div>
+              <div class="axis-row">
+                <span><i class="fas fa-head-side-virus"></i> Cognitive Confusion</span>
+                <span>Normal, Highly Confused</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="method-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>LLM Backbone Selection</h3>
+            <p>Eight LLMs were evaluated as the patient simulator backbone. <strong>Llama 3.3 70B</strong> was selected based on its superior persona fidelity (average score 3.68/4) and highest cognitive confusion simulation (4.0/4), validated by four clinicians at Samsung Medical Center.</p>
+            <div class="highlight-box">
+              <i class="fas fa-star"></i>
+              Selected backbone: <strong>Llama 3.3 70B</strong> &mdash; highest persona fidelity across all four axes
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="method-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Evaluation Framework</h3>
+            <p>Three research questions structure the evaluation, each with dedicated automated and human metrics.</p>
+            <div class="rq-grid">
+              <div class="rq-card">
+                <div class="rq-label">RQ1</div>
+                <strong>Persona Fidelity</strong>
+                <p>4-point scale across personality consistency, language appropriateness, recall accuracy, cognitive coherence, and overall realism</p>
+              </div>
+              <div class="rq-card">
+                <div class="rq-label">RQ2</div>
+                <strong>Factual Accuracy</strong>
+                <p>Sentence-level NLI evaluation: entailment rate, contradiction rate, information coverage (ICov) and consistency (ICon)</p>
+              </div>
+              <div class="rq-card">
+                <div class="rq-label">RQ3</div>
+                <strong>Clinical Plausibility</strong>
+                <p>Clinician ratings (4-point) on plausibility of statements not directly supported by clinical records</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="section section-alt" id="results">
+    <div class="container">
+      <h2 class="section-title">Results</h2>
+      <div class="results-grid">
+
+        <div class="result-card">
+          <div class="result-number">3.89<span>/4</span></div>
+          <div class="result-label">Overall Quality Score</div>
+          <div class="result-desc">Average rating from four expert clinicians; 3.75/4 for educational utility</div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-number">97.8<span>%</span></div>
+          <div class="result-label">Entailment Rate</div>
+          <div class="result-desc">Factual accuracy of supported statements, with only ~2% contradiction rate</div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-number">3.96<span>/4</span></div>
+          <div class="result-label">Clinical Plausibility</div>
+          <div class="result-desc">Average plausibility score for unsupported but clinically reasonable statements</div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-number">&gt;0.85</div>
+          <div class="result-label">Inter-Rater Agreement</div>
+          <div class="result-desc">Gwet's AC&#8321; across all four clinicians, indicating strong agreement</div>
+        </div>
+
+      </div>
+
+      <div class="results-note">
+        <i class="fas fa-info-circle"></i>
+        <span>Llama 3.3 70B achieved the best persona fidelity (3.68 avg) among all 8 evaluated LLMs, with a perfect score of 4.0/4 for cognitive confusion simulation. Most models exhibited reduced negative personality trait expression due to LLM safety alignment constraints.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dataset -->
+  <section class="section" id="dataset">
+    <div class="container">
+      <h2 class="section-title">Dataset</h2>
+      <div class="dataset-layout">
+        <div class="dataset-info">
+          <p>PatientSim is built on three complementary MIMIC resources, with 170 patient profiles spanning five emergency department diagnoses.</p>
+          <table class="dataset-table">
+            <thead>
+              <tr><th>Dataset</th><th>Version</th><th>Content</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>MIMIC-IV</td><td>v3.1</td><td>Structured inpatient records</td></tr>
+              <tr><td>MIMIC-IV-ED</td><td>v2.2</td><td>Emergency department records</td></tr>
+              <tr><td>MIMIC-IV-Note</td><td>v2.2</td><td>Clinical narrative notes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dataset-access">
+          <div class="access-card">
+            <i class="fas fa-database fa-2x"></i>
+            <h3>Download Dataset</h3>
+            <p>De-identified patient profiles available on PhysioNet under a credentialed access policy.</p>
+            <a href="https://physionet.org/content/persona-patientsim/1.0.0/" class="btn btn-teal" target="_blank">
+              <i class="fas fa-download"></i> PhysioNet
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="citation">
+    <div class="container narrow">
+      <h2 class="section-title">Citation</h2>
+      <pre class="bibtex"><code>@inproceedings{kyung2025patientsim,
+  title     = {PatientSim: A Persona-Driven Simulator for
+               Realistic Doctor-Patient Interactions},
+  author    = {Kyung, Daeun and Chung, Hyunseung and Bae, Seongsu
+               and Kim, Jiho and Sohn, Jae Ho and Kim, Taerim
+               and Kim, Soo Kyung and Choi, Edward},
+  booktitle = {The Thirty-ninth Annual Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
+  year      = {2025}
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        PatientSim &mdash; NeurIPS 2025 Datasets &amp; Benchmarks (Spotlight) &nbsp;|&nbsp;
+        <a href="https://arxiv.org/abs/2505.17818" target="_blank">arXiv:2505.17818</a> &nbsp;|&nbsp;
+        <a href="https://github.com/dek924/PatientSim" target="_blank">GitHub</a> &nbsp;|&nbsp;
+        <a href="https://physionet.org/content/persona-patientsim/1.0.0/" target="_blank">Dataset</a>
+      </p>
+      <p class="footer-cc">Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
