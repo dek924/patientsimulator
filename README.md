@@ -11,4 +11,4 @@ Project homepage for the paper:
 - [Paper (arXiv)](https://arxiv.org/abs/2505.17818)
 - [Code (GitHub)](https://github.com/dek924/PatientSim)
 - [Dataset (PhysioNet)](https://physionet.org/content/persona-patientsim/1.0.0/)
-- [Live Demo](https://huggingface.co/spaces/dek924/PatientSim_Demo)
+- [Live Demo](https://unstructured-rheological-cindie.ngrok-free.dev/)
